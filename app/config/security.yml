@@ -1,0 +1,33 @@
+# app/config/security.yml
+security:
+    # Para efectos del ejemplo las claves no se encriptan
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    providers:
+        # Usamos el proveedor de usuarios en memoria para no complicar el tutorial:
+        in_memory:
+            memory:
+                users:
+                    one@test.com:
+                        password: 123
+                        roles: 'ROLE_USER'
+                    two@test.com:
+                        password: 123
+                        roles: 'ROLE_USER'
+                    three@test.com:
+                        password: 123
+                        roles: 'ROLE_USER'
+
+    firewalls:
+        # Las rutas del profiler no llevan seguridad.
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        # Creamos el firewall de toda la aplicación:
+        main:
+            pattern: ^/
+            anonymous: ~
+            # La autenticación la manejamos con http_basic para simplificar el tutorial
+            http_basic: ~

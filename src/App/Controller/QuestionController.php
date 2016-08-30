@@ -7,6 +7,7 @@ use Forum\Question\Question;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class QuestionController extends Controller
 {
@@ -24,11 +25,12 @@ class QuestionController extends Controller
 
     /**
      * @Route("/new", name="question_create")
+     * @Security("is_authenticated()")  Se añade la anotación de seguridad
      */
     public function newAction(Request $request)
     {
         $form = $this->createForm(QuestionType::class, null, [
-            'author' => 'test@test.com',
+            'author' => $this->getUser()->getUsername(), // Se pasa el usuario logueado al form.
         ]);
         $form->handleRequest($request);
 

@@ -1,3 +1,4 @@
+{# app/Resources/views/base.html.twig #}
 <!doctype html>
 <html lang="es">
 <head>
@@ -12,6 +13,13 @@
     <div class="container">
         <div class="header-title">
             Symfony Micro-Foro
+            {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="header-user-container">
+                    <span class="header-user">
+                        {{ app.user.username }}                        
+                    </span>
+                </div>
+            {% endif %}
         </div>
     </div>
 </header>
