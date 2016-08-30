@@ -1,5 +1,20 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: services.yml }
+
 framework:
-    secret: StringAleatorio # Cambiar esto
+    secret: StringAleatorio
     templating:
         engines: ['twig']
     profiler: { only_exceptions: false }
+    form: ~                       # Nos permite crear y trabajar con formularios de Symfony.
+    validation:                   # Activa la validación de objetos.
+        enable_annotations: true
+    translator:                   # Activa la traducción de las validaciones.
+        fallback: es
+    default_locale: es
+
+# Registramos un tema de formularios para mejorar el aspecto de los mismos.
+twig:
+    form_theme:
+        - 'form/fields.html.twig'

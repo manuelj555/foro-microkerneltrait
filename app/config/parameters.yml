@@ -1,0 +1,6 @@
+parameters:
+    database_host: "127.0.0.1"
+    database_driver: "pdo_mysql"
+    database_name: "micro-foro"
+    database_user: "root"
+    database_password: ~

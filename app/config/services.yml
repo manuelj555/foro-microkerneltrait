@@ -1,0 +1,24 @@
+services:
+    # Clase necesaria para la conexión DBAL
+    database.configuration:
+        public: false
+        class: Doctrine\DBAL\Configuration
+
+    # Representa la conexión con la base de datos
+    database.connection:
+        public: false
+        class: Doctrine\DBAL\Connection
+        factory: [Doctrine\DBAL\DriverManager, getConnection]
+        arguments:
+            -   host: "%database_host%"
+                dbname: "%database_name%"
+                user: "%database_user%"
+                password: "%database_password%"
+                driver: "%database_driver%"
+            - "@database.configuration"
+
+    # Representa la implementación de Forum\Question\Repository\QuestionRepository
+    repository.question:
+        class: Forum\Question\Repository\DbQuestionRepository
+        autowire: true # el autowire activa la inyección de dependencias automática.
+        # los argumentos son inyectados de forma automática gracias al autowiring

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block page_header %}
+    Preguntas Recientes
+    <span class="pull-right">
+        <a href="{{ path('question_create') }}" class="button primary">Hacer una Pregunta</a>
+    </span>
+{% endblock %}
+
+{% block content %}
+    {% for question in questions %}
+        <div class="question">
+            <h3><a href="{{ path('question_list') }}">{{ question.title }}</a></h3>
+            <div class="question-content">{{ question.description }}</div>
+            <p class="question-footer">
+                {{ question.author }} - {{ question.createdAt|date }}
+            </p>
+        </div>
+    {% else %}
+        <h2>No hay preguntas creadas</h2>
+    {% endfor %}
+{% endblock %}

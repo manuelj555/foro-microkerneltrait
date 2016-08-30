@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block page_header %}
+    Crear Pregunta
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_row(form.title, { label: 'Título de la Pregunta' }) }}
+    {{ form_row(form.description, { label: 'Descripción de la Pregunta', attr: { class:'description-widget' } }) }}
+    <div class="form-actions">
+        <input type="submit">
+        <a href="{{ path('question_list') }}" class="button">Volver</a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
