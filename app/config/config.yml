@@ -1,0 +1,5 @@
+framework:
+    secret: StringAleatorio # Cambiar esto
+    templating:
+        engines: ['twig']
+    profiler: { only_exceptions: false }

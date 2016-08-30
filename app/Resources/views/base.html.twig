@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Micro Foro - Symfony</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/foro.css') }}">
+    {% endblock stylesheets %}
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-title">
+            Symfony Micro-Foro
+        </div>
+    </div>
+</header>
+<article class="container">
+
+    <h1 class="page-header">{% block page_header %}{% endblock %}</h1>
+
+    <section class="content">
+        {% block content %}{% endblock %}
+    </section>
+</article>
+</body>
+</html>
